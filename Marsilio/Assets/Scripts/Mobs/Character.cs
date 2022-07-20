@@ -12,10 +12,7 @@ public class Character : Mob
         
     }
 
-    public override void Attack()
-    {
-        
-    }
+  
 
-    
+
 }

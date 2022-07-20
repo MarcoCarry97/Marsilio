@@ -1,39 +1,76 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    private List<int> moves;
+    public List<Character> characters;
 
-    private int currentMove;
+    public List<Enemy> enemies;
+
+    public Mob currentTurn;
 
     private bool end;
 
-    // Start is called before the first frame update
+    private int totMobs;
+
+    private int index;
+
     void Start()
     {
-        moves = new List<Mob>();
+        totMobs = characters.Count + enemies.Count;
         end = false;
-        currentMove = 1; 
+        index = 0;
+        currentTurn = characters[0];
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(end)
+        changeTurnIfFinished();
+        if(!end)
         {
-
+            characterTurn();
+            enemyTurn();
         }
     }
 
-    private void ShowSelectPanel()
+    private void enemyTurn()
     {
+        if(currentTurn is Enemy)
+        {
+            
+        }
+    }
+
+    private void characterTurn()
+    {
+        if(currentTurn is Character)
+        {
+            showMoves();
+        }
+    }
+
+    private void showMoves()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+
 
     }
 
-    private void EndTurn()
+    private void changeTurnIfFinished()
     {
-        end = true;
+        if (end)
+        {
+            index = (index + 1) % totMobs;
+            if (index < characters.Count)
+                currentTurn = characters[index];
+            else currentTurn = enemies[index % enemies.Count];
+        }        
+    }
+
+    public void NextTurn()
+    {
+
     }
 }

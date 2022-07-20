@@ -20,11 +20,14 @@ public abstract class Mob : MonoBehaviour
 
     public string Name { get; set; }
 
+    [Range(0, 10)]
+    public float acceleration;
+
     private TurnManager manager;
 
     void Start()
     {
-        manager = GameObject.Find("TurnManager").GetComponent<TurnManager>();
+        //manager = GameObject.Find("TurnManager").GetComponent<TurnManager>();
     }
 
     // Update is called once per frame
@@ -33,5 +36,8 @@ public abstract class Mob : MonoBehaviour
         
     }
 
-    public abstract void Attack();
+    public void Move(Vector3 direction)
+    {
+        this.transform.Translate(acceleration * direction);
+    }
 }
