@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RPGM.Gameplay;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 
 namespace RPGM.Gameplay
@@ -83,6 +84,20 @@ namespace RPGM.Gameplay
             if (pixelPerfectCamera != null)
             {
                 transform.position = pixelPerfectCamera.RoundToPixel(transform.position);
+            }
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                SceneManager.UnloadSceneAsync("SampleScene");
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if(collision.collider.tag.Equals("Enemy"))
+            {
+                print("TRIGGERED");
+                SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
+                state=State.Idle;
             }
         }
 

@@ -414,6 +414,7 @@
 "Assets/Creator Kit - RPG/Scripts/UI/SpriteUIElement.cs"
 "Assets/Creator Kit - RPG/Scripts/UI/TranslationAnimation.cs"
 "Assets/Creator Kit - RPG/Scripts/UI/UserInterfaceAudio.cs"
+"Assets/Scripts/CommandController.cs"
 "Assets/Scripts/GameState.cs"
 "Assets/Scripts/Mobs/Character.cs"
 "Assets/Scripts/Mobs/Enemy.cs"

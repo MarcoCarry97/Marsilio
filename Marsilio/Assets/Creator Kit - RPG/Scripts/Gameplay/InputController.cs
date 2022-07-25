@@ -49,7 +49,7 @@ namespace RPGM.UI
 
         void CharacterControl()
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            /*if (Input.GetKey(KeyCode.UpArrow))
                 model.player.nextMoveCommand = Vector3.up * stepSize;
             else if (Input.GetKey(KeyCode.DownArrow))
                 model.player.nextMoveCommand = Vector3.down * stepSize;
@@ -58,7 +58,21 @@ namespace RPGM.UI
             else if (Input.GetKey(KeyCode.RightArrow))
                 model.player.nextMoveCommand = Vector3.right * stepSize;
             else
-                model.player.nextMoveCommand = Vector3.zero;
+                model.player.nextMoveCommand = Vector3.zero;*/
+            Vector3 direction = Vector3.zero;
+            if (Input.anyKey)
+            {
+                if (Input.GetKey(KeyCode.W))
+                    direction.y = 1;
+                if (Input.GetKey(KeyCode.A))
+                    direction.x = -1;
+                if (Input.GetKey(KeyCode.S))
+                    direction.y = -1;
+                if (Input.GetKey(KeyCode.D))
+                    direction.x = 1;
+            }
+            else direction = Vector3.zero;
+            model.player.nextMoveCommand = direction.normalized*stepSize;
         }
     }
 }
